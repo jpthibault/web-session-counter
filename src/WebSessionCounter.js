@@ -2,14 +2,18 @@
 import querystring from 'querystring';
 
 function isLocalStorageSupported() {
-    let testKey = 'test', storage = window.localStorage;
     try {
-        storage.setItem(testKey, '1');
-        storage.removeItem(testKey);
-        return true;
-    }
-    catch (error) {
-        return false;
+        let testKey = 'test', storage = window.localStorage;
+        try {
+            storage.setItem(testKey, '1');
+            storage.removeItem(testKey);
+            return true;
+        }
+        catch (error) {
+            return false;
+        }
+    } catch (error) {
+        return false
     }
 }
 
